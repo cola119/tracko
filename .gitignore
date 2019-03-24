@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 firebase/config.js
+src/mapbox/config.js
 
 # testing
 /coverage
