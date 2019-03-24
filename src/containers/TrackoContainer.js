@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+
 import Map from '../components/Map'
-import {mapboxConfig} from '../mapbox/config';
+import { mapboxConfig } from '../mapbox/config';
 
 class TrackoContainer extends Component {
 	render() {
@@ -15,5 +16,6 @@ class TrackoContainer extends Component {
 		)
 	}
 }
+
 
 export default TrackoContainer;
