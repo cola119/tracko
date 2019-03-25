@@ -8,6 +8,7 @@ class Map extends Component {
 			<ReactMapGL
 				{...this.props.viewport}
 				mapboxApiAccessToken={this.props.token}
+				onViewportChange={this.props.onViewportChange}
 			>
 				<UserPointer />
 			</ReactMapGL>
