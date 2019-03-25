@@ -12,8 +12,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.leaflet-container {
-    width: 600px;
-    height: 300px;
-    margin: 10px;
+
+svg {
+	width: 8000px;
+	height: 8000px;
 }

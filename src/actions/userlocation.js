@@ -1,3 +1,4 @@
+import * as actionTypes from '../utils/actionTypes';
 import { firebaseDb } from '../firebase/';
 
 const userLocationsRef = firebaseDb.ref("user-locations");
@@ -11,9 +12,14 @@ function loadUserLocations() {
 	};
 }
 
-function loadUserLocationsSuccess(snapshot) {
-	return {
-		type: 'USERLOCATIONS_RECEIVE_DATA',
-		data: snapshot.val()
-	};
-}
+export const loadUserLocationsSuccess = (snapshot) => ({
+	type: actionTypes.USERLOCATIONS_RECEIVE_DATA,
+	data: snapshot.val()
+});
+// 
+// function loadUserLocationsSuccess(snapshot) {
+// 	return {
+// 		type: actionTypes.USERLOCATIONS_RECEIVE_DATA,
+// 		data: snapshot.val()
+// 	};
+// }

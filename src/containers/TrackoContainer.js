@@ -1,24 +1,38 @@
 import React, { Component } from 'react';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions';
+
+import Map from '../components/Map'
+import { mapboxConfig } from '../mapbox/config';
 
 class TrackoContainer extends Component {
 	render() {
-		const position = [51.505, -0.09];
-		const zoom = 13;
+		const token = mapboxConfig.token;
+		// const size = { width: "100%", height: 500, }
+		// const center = { latitude: 37.7577, longitude: -122.4376, }
+		// const zoom = { zoom: 13 }
+		// const viewport = { ...size, ...center, ...zoom }
+
+		const { MapReducer, actions } = this.props;
+		console.log(this.props);
+
 		return (
-			<Map center={position} zoom={zoom}>
-				<TileLayer
-					attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-				/>
-				<Marker position={position}>
-					<Popup>
-						A pretty CSS3 popup. <br /> Easily customizable.
-					</Popup>
-				</Marker>
-			</Map>
+			<Map viewport={MapReducer.viewport} token={token} onViewportChange={(viewport) => actions.onViewportChange(viewport)} />
 		)
 	}
 }
 
-export default TrackoContainer;
+const mapStateToProps = state => {
+	return state;
+};
+
+
+function mapDispatch(dispatch) {
+	return {
+		actions: bindActionCreators(actions, dispatch),
+	};
+}
+
+
+export default connect(mapStateToProps, mapDispatch)(TrackoContainer);
