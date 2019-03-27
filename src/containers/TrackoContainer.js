@@ -7,32 +7,31 @@ import Map from '../components/Map'
 import { mapboxConfig } from '../mapbox/config';
 
 class TrackoContainer extends Component {
+	componentDidMount() {
+		const { actions } = this.props;
+		actions.loadUserLocations();
+	}
+
 	render() {
 		const token = mapboxConfig.token;
-		// const size = { width: "100%", height: 500, }
-		// const center = { latitude: 37.7577, longitude: -122.4376, }
-		// const zoom = { zoom: 13 }
-		// const viewport = { ...size, ...center, ...zoom }
-
-		const { MapReducer, actions } = this.props;
-		console.log(this.props);
-
+		const { MapReducer, FirebaseDbReducer, actions } = this.props;
+		// console.log(this.props);
+		// dataはどうやって保持？
+		console.log(FirebaseDbReducer.data);
 		return (
 			<Map viewport={MapReducer.viewport} token={token} onViewportChange={(viewport) => actions.onViewportChange(viewport)} />
 		)
 	}
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	return state;
 };
 
-
-function mapDispatch(dispatch) {
+const mapDispatch = (dispatch) => {
 	return {
 		actions: bindActionCreators(actions, dispatch),
 	};
 }
-
 
 export default connect(mapStateToProps, mapDispatch)(TrackoContainer);

@@ -17,7 +17,7 @@ const MapReducer = (state = initialAppState, action) => {
 			};
 		default:
 			return state;
-	}
-}
+	};
+};
 
 export default MapReducer;

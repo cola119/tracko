@@ -1,2 +1,2 @@
 export * from './mapbox';
-export * from './userlocation';
+export * from './firebaseDb';
