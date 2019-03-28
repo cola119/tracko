@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 
 import Map from '../components/Map'
+import LeftDrawer from '../components/LeftDrawer'
 import { mapboxConfig } from '../mapbox/config';
 
 class TrackoContainer extends Component {
@@ -16,13 +17,12 @@ class TrackoContainer extends Component {
 	render() {
 		const token = mapboxConfig.token;
 		const { MapReducer, FirebaseDbReducer, actions } = this.props;
-		// console.log(this.props);
-		// console.log(FirebaseDbReducer.userlist);
-		// console.log(FirebaseDbReducer.userlocations);
 		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined) {
-			return <div>loading</div>
-		} else {
-			return (
+			return <div>loading</div>;
+		}
+		return (
+			<div>
+				<LeftDrawer compName="第n回日本学生オリエンテーリング選手権大会"/>
 				<Map
 					viewport={MapReducer.viewport}
 					token={token}
@@ -30,9 +30,8 @@ class TrackoContainer extends Component {
 					users={FirebaseDbReducer.users}
 					userlist={FirebaseDbReducer.userlist}
 					userlocations={FirebaseDbReducer.userlocations} />
-			)
-		}
-
+			</div>
+		);
 	}
 }
 
