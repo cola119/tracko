@@ -9,17 +9,30 @@ import { mapboxConfig } from '../mapbox/config';
 class TrackoContainer extends Component {
 	componentDidMount() {
 		const { actions } = this.props;
-		actions.loadUserLocations()
+		actions.loadUserlist();
+		actions.loadUserLocations();
 	}
 
 	render() {
 		const token = mapboxConfig.token;
 		const { MapReducer, FirebaseDbReducer, actions } = this.props;
 		// console.log(this.props);
-		console.log(FirebaseDbReducer.data);
-		return (
-			<Map viewport={MapReducer.viewport} token={token} onViewportChange={(viewport) => actions.onViewportChange(viewport)} />
-		)
+		// console.log(FirebaseDbReducer.userlist);
+		// console.log(FirebaseDbReducer.userlocations);
+		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined) {
+			return <div>loading</div>
+		} else {
+			return (
+				<Map
+					viewport={MapReducer.viewport}
+					token={token}
+					onViewportChange={(viewport) => actions.onViewportChange(viewport)}
+					users={FirebaseDbReducer.users}
+					userlist={FirebaseDbReducer.userlist}
+					userlocations={FirebaseDbReducer.userlocations} />
+			)
+		}
+
 	}
 }
 
