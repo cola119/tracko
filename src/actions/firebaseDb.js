@@ -1,37 +1,14 @@
 import * as actionTypes from '../utils/actionTypes';
-// import { firebaseDb } from '../firebase/';
+import { firebaseDb } from '../firebase/';
 
-// const userLocationsRef = firebaseDb.ref("user-locations");
-//
-// const loadUserLocations = () => {
-// 	return dispatch => {
-// 		userLocationsRef.off();
-// 		userLocationsRef.on('value', (snapshot) => {
-// 			dispatch(loadUserLocationsSuccess(snapshot))
-// 		});
-// 	};
-// }
-// function loadUserLocations() {
-// 	return dispatch => {
-// 		userLocationsRef.off();
-// 		userLocationsRef.on('value', (snapshot) => {
-// 			dispatch(loadUserLocationsSuccess(snapshot))
-// 		});
-// 	};
-// }
+export const loadUserLocations = () => async dispatch => {
+	const userLocationsRef = firebaseDb.ref("user-locations");
+	userLocationsRef.on('value', (snapshot) => {
+		dispatch(loadUserLocationsSuccess(snapshot))
+	});
+}
 
-// export const loadUserLocations = (snapshot) => ({
-// 	type: actionTypes.USERLOCATIONS_RECEIVE_DATA,
-// 	data: snapshot
-// });
-export const loadUserLocations = () => ({
+export const loadUserLocationsSuccess = (snapshot) => ({
 	type: actionTypes.USERLOCATIONS_RECEIVE_DATA,
-	// data: snapshot
+	data: snapshot.val()
 });
-//
-// function loadUserLocationsSuccess(snapshot) {
-// 	return {
-// 		type: actionTypes.USERLOCATIONS_RECEIVE_DATA,
-// 		data: snapshot.val()
-// 	};
-// }

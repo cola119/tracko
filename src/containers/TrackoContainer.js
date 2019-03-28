@@ -9,14 +9,13 @@ import { mapboxConfig } from '../mapbox/config';
 class TrackoContainer extends Component {
 	componentDidMount() {
 		const { actions } = this.props;
-		actions.loadUserLocations();
+		actions.loadUserLocations()
 	}
 
 	render() {
 		const token = mapboxConfig.token;
 		const { MapReducer, FirebaseDbReducer, actions } = this.props;
 		// console.log(this.props);
-		// dataはどうやって保持？
 		console.log(FirebaseDbReducer.data);
 		return (
 			<Map viewport={MapReducer.viewport} token={token} onViewportChange={(viewport) => actions.onViewportChange(viewport)} />
@@ -32,6 +31,6 @@ const mapDispatch = (dispatch) => {
 	return {
 		actions: bindActionCreators(actions, dispatch),
 	};
-}
+};
 
 export default connect(mapStateToProps, mapDispatch)(TrackoContainer);
