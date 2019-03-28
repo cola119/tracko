@@ -1,16 +1,17 @@
 import React from 'react';
-import {BaseControl} from 'react-map-gl';
+import { SVGOverlay, BaseControl } from 'react-map-gl';
 
 class UserPointer extends BaseControl {
+	redraw = ({project}) => {
+		const { viewport } = this._context;
+		const { user, name, userlocation } = this.props;
+		// console.log(userlocation);
+		const [cx, cy] = project([userlocation[userlocation.length-1].long, userlocation[userlocation.length-1].lat]);
+		return <circle cx={cx} cy={cy} r={viewport.zoom} fill="blue" stroke="red" />;
+	}
+
 	_render() {
-		// const {viewport} = this._context;
-		const { user, name, userlocations } = this.props;
-		// console.log(userlocations);
-		return (
-			<svg>
-				<circle cx="100" cy="125" r="40"></circle>
-			</svg>
-		);
+		return <SVGOverlay redraw={this.redraw} />
 	}
 }
 export default UserPointer;

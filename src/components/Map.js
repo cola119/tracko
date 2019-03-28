@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactMapGL from 'react-map-gl';
 import UserPointer from '../components/UserPointer'
 
@@ -29,7 +29,7 @@ const Map = (props) => {
 							key={user}
 							user={user}
 							name={props.userlist[user].name}
-							userlocations={props.userlocations[user]} />
+							userlocation={props.userlocations[user]} />
 					);
 				})
 			}
