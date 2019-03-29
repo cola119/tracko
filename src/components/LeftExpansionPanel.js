@@ -17,10 +17,10 @@ const styles = theme => ({
 	root: {
 		width: '100%',
 	},
-	heading: {
-		fontSize: theme.typography.pxToRem(15),
-		fontWeight: theme.typography.fontWeightRegular,
-	},
+	// heading: {
+	// 	fontSize: theme.typography.pxToRem(15),
+	// 	fontWeight: theme.typography.fontWeightRegular,
+	// },
 });
 
 const LeftExpansionPanel = (props) => {
@@ -47,7 +47,7 @@ const LeftExpansionPanel = (props) => {
 
 			<ExpansionPanel disabled>
 				<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-					<Typography className={classes.heading}>
+					<Typography>
 						Disabled
 					</Typography>
 				</ExpansionPanelSummary>

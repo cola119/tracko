@@ -21,7 +21,7 @@ const Map = (props) => {
 						<UserPointer
 							key={user}
 							user={user}
-							viewallFlag={props.viewallFlags[user]}/>
+							viewallFlag={props.viewallFlags[user]}
 							userinfo={props.userlist[user]}
 							userlocation={props.userlocations[user]} />
 					);

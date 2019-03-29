@@ -35,7 +35,7 @@ class ClassesExpansionPanel extends React.Component {
 		return (
 			<ExpansionPanel>
 				<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-					<Typography className={classes.heading}>
+					<Typography>
 						{/* <ListItemIcon><InboxIcon />Runners</ListItemIcon> */}
 						{title}
 					</Typography>

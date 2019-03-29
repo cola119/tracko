@@ -42,7 +42,7 @@ const RunnersExpansionPanel = (props) => {
 	return (
 		<ExpansionPanel>
 			<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-				<Typography className={classes.heading}>
+				<Typography>
 					{title}
 				</Typography>
 			</ExpansionPanelSummary>
