@@ -11,6 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 // import InboxIcon from '@material-ui/icons/MoveToInbox';
 
 import ClassesExpansionPanel from './ExpansionPanels/ClassesExpansionPanel';
+import RunnersExpansionPanel from './ExpansionPanels/RunnersExpansionPanel';
 
 const styles = theme => ({
 	root: {
@@ -33,20 +34,15 @@ const LeftExpansionPanel = (props) => {
 				classlist={props.classlist}
 				onClassChange={props.onClassChange}
 				selectedClass={props.selectedClass}/>
+			<RunnersExpansionPanel
+				classes={classes}
+				title="Runners"
+				runners={props.runners}
+				runnerlist={props.runnerlist}
+				selectedClass={props.selectedClass}
+				// onClassChange={props.onClassChange}
+			/>
 
-			<ExpansionPanel>
-				<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-					<Typography className={classes.heading}>
-						Runners
-					</Typography>
-				</ExpansionPanelSummary>
-				<ExpansionPanelDetails>
-					<Typography>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-						sit amet blandit leo lobortis eget.
-					</Typography>
-				</ExpansionPanelDetails>
-			</ExpansionPanel>
 
 			<ExpansionPanel disabled>
 				<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>

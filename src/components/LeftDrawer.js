@@ -132,6 +132,8 @@ class LeftDrawer extends React.Component {
 					<LeftExpansionPanel
 						_classes={FirebaseDbReducer.classes}
 						classlist={FirebaseDbReducer.classlist}
+						runners={FirebaseDbReducer.users}
+						runnerlist={FirebaseDbReducer.userlist}
 						onClassChange={actions.onClassChange}
 						selectedClass={(LeftDrawerReducer.value === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.value}/>
 
