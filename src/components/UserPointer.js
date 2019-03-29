@@ -9,9 +9,9 @@ const userPointerCircleStyle = {
 }
 
 // userlocation === undefinedの処理
-const getUserPointerPath = (project, userlocation, pointNum) => {
+const getUserPointerPath = (project, userlocation, tailLength, viewallFlag) => {
 	if (userlocation === undefined) return "";
-	const data = userlocation.length <= pointNum ? userlocation : userlocation.slice(userlocation.length-pointNum, userlocation.length);
+	const data = (userlocation.length <= tailLength) ? userlocation : userlocation.slice(userlocation.length-tailLength, userlocation.length);
 	const path = data.reduce((prev, curr, index, array) => {
 		const [x, y] = project([curr.long, curr.lat]);
 		const str = (index === 0 ? 'M' : 'L') + x + ' ' + y;
@@ -24,13 +24,14 @@ const getUserPointerPath = (project, userlocation, pointNum) => {
 class UserPointer extends BaseControl {
 	redraw = ({project}) => {
 		const { viewport } = this._context;
-		const { user, name, userlocation } = this.props;
+		const { user, name, userlocation, viewallFlag } = this.props;
 		// console.log(userlocation);
 		if (userlocation === undefined) return;
 		const [cx, cy] = project([userlocation[userlocation.length-1].long, userlocation[userlocation.length-1].lat]);
+		const tailLength = viewallFlag ? userlocation.length : 20;
 		return (
 			<g>
-				<path d={getUserPointerPath(project, userlocation, 20)} stroke="lightgreen" strokeWidth="5" fill="none"/>
+				<path d={getUserPointerPath(project, userlocation, tailLength)} stroke="lightgreen" strokeWidth="5" fill="none"/>
 				<circle cx={cx} cy={cy} r={viewport.zoom/2}  style={userPointerCircleStyle} />
 			</g>
 		)

@@ -20,7 +20,8 @@ const Map = (props) => {
 							key={user}
 							user={user}
 							name={props.userlist[user].name}
-							userlocation={props.userlocations[user]} />
+							userlocation={props.userlocations[user]}
+							viewallFlag={props.viewallFlags[user]}/>
 					);
 				})
 			}

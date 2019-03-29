@@ -32,7 +32,8 @@ class TrackoContainer extends Component {
 					onViewportChange={(viewport) => actions.onViewportChange(viewport)}
 					users={FirebaseDbReducer.users}
 					userlist={FirebaseDbReducer.userlist}
-					userlocations={FirebaseDbReducer.userlocations} />
+					userlocations={FirebaseDbReducer.userlocations}
+					viewallFlags={LeftDrawerReducer.viewallFlags} />
 			</div>
 		);
 	}
