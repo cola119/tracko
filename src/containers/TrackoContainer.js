@@ -18,7 +18,7 @@ class TrackoContainer extends Component {
 	render() {
 		const token = mapboxConfig.token;
 		const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, actions } = this.props;
-		// console.log(FirebaseDbReducer);
+		// console.log(LeftDrawerReducer.viewallFlags);
 		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined || FirebaseDbReducer.classlist === undefined) {
 			return <div>loading</div>;
 		}

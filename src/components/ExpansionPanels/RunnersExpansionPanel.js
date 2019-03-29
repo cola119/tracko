@@ -36,7 +36,8 @@ const styles = theme => ({
 });
 
 const RunnersExpansionPanel = (props) => {
-	const { classes, title, runnerlist, runners } = props;
+	const { classes, title, runnerlist, runners, viewallFlags, onViewallChange } = props;
+	// console.log(viewallFlags);
 
 	return (
 		<ExpansionPanel>
@@ -59,7 +60,9 @@ const RunnersExpansionPanel = (props) => {
 										secondary={
 											<React.Fragment>
 												{runnerlist[runner].club}
-												<Button size="small">view all</Button>
+												<Button
+													size="small"
+													onClick={(e) => onViewallChange(e, runner, viewallFlags[runner])}>view all</Button>
 											</React.Fragment>
 										}
 									/>

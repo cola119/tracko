@@ -40,7 +40,8 @@ const LeftExpansionPanel = (props) => {
 				runners={props.runners}
 				runnerlist={props.runnerlist}
 				selectedClass={props.selectedClass}
-				// onClassChange={props.onClassChange}
+				viewallFlags={props.viewallFlags}
+				onViewallChange={props.onViewallChange}
 			/>
 
 
