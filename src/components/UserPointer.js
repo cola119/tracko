@@ -9,7 +9,6 @@ const userPointerCircleStyle = {
 }
 
 const getUserPointerPath = (project, userlocation, pointNum) => {
-	// pointNum未満のときバグ
 	const data = userlocation.length <= pointNum ? userlocation : userlocation.slice(userlocation.length-pointNum, userlocation.length);
 	const path = data.reduce((prev, curr, index, array) => {
 		const [x, y] = project([curr.long, curr.lat]);

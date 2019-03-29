@@ -24,18 +24,12 @@ const styles = theme => ({
 	// },
 });
 
-// const ClassesExpansionPanel = (props) => {
+// function化
 class ClassesExpansionPanel extends React.Component {
-	// redux
-	state = {
-		value: 'ME',
-	};
-	handleChange = event => {
-		this.setState({ value: event.target.value });
-	};
 
 	render() {
-		const { classes, title } = this.props;
+		// console.log(this.props);
+		const { classes, title, onClassChange, selectedClass } = this.props;
 
 		return (
 			<ExpansionPanel>
@@ -47,23 +41,21 @@ class ClassesExpansionPanel extends React.Component {
 				</ExpansionPanelSummary>
 				<ExpansionPanelDetails>
 					<FormControl component="fieldset" className={classes.formControl}>
-						{/* <FormLabel component="legend">Select classes</FormLabel> */}
 						<RadioGroup
 							aria-label="Classes"
 							name="compclasses"
 							className={classes.group}
-							value={this.state.value}
-							onChange={this.handleChange}
+							value={selectedClass}
+							onChange={(e) => onClassChange(e)}
 						>
 							<FormControlLabel value="ME" control={<Radio />} label="ME" />
 							<FormControlLabel value="WE" control={<Radio />} label="WE" />
 							<FormControlLabel value="M21A" control={<Radio />} label="M21A" />
-							<FormControlLabel value="other" control={<Radio />} label="Other" />
 							<FormControlLabel
 								value="disabled"
 								disabled
 								control={<Radio />}
-								label="(Disabled option)"
+								label="W21A"
 							/>
 						</RadioGroup>
 					</FormControl>
@@ -72,5 +64,5 @@ class ClassesExpansionPanel extends React.Component {
 		);
 	};
 }
-//
+
 export default withStyles(styles)(ClassesExpansionPanel);

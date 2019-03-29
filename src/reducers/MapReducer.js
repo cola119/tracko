@@ -1,7 +1,5 @@
 import * as actionTypes from '../utils/actionTypes';
 
-
-// const size = { width: "100%", height: "200px", };
 const center = { latitude: 35.6053182, longitude: 139.6923339, };
 const zoom = { zoom: 13 };
 

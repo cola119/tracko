@@ -22,11 +22,15 @@ const styles = theme => ({
 	},
 });
 
-function LeftExpansionPanel(props) {
+const LeftExpansionPanel = (props) => {
 	const { classes } = props;
 	return (
 		<div className={classes.root}>
-			<ClassesExpansionPanel classes={classes} title="Classes" />
+			<ClassesExpansionPanel
+				classes={classes}
+				title="Classes"
+				onClassChange={props.onClassChange}
+				selectedClass={props.selectedClass}/>
 
 			<ExpansionPanel>
 				<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
