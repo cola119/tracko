@@ -88,7 +88,7 @@ class LeftDrawer extends React.Component {
 	};
 
 	render() {
-		const { classes, theme, actions, LeftDrawerReducer } = this.props;
+		const { classes, theme, actions, FirebaseDbReducer, LeftDrawerReducer } = this.props;
 		const { open } = this.state;
 
 		return (
@@ -130,8 +130,10 @@ class LeftDrawer extends React.Component {
 					<Divider />
 
 					<LeftExpansionPanel
+						_classes={FirebaseDbReducer.classes}
+						classlist={FirebaseDbReducer.classlist}
 						onClassChange={actions.onClassChange}
-						selectedClass={LeftDrawerReducer.value}/>
+						selectedClass={(LeftDrawerReducer.value === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.value}/>
 
 				</Drawer>
 				<main

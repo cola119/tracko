@@ -29,7 +29,8 @@ class ClassesExpansionPanel extends React.Component {
 
 	render() {
 		// console.log(this.props);
-		const { classes, title, onClassChange, selectedClass } = this.props;
+		const { classes, title, classlist, onClassChange, selectedClass } = this.props;
+		// console.log(this.props._classes);
 
 		return (
 			<ExpansionPanel>
@@ -48,15 +49,21 @@ class ClassesExpansionPanel extends React.Component {
 							value={selectedClass}
 							onChange={(e) => onClassChange(e)}
 						>
-							<FormControlLabel value="ME" control={<Radio />} label="ME" />
-							<FormControlLabel value="WE" control={<Radio />} label="WE" />
-							<FormControlLabel value="M21A" control={<Radio />} label="M21A" />
-							<FormControlLabel
+							{
+								this.props._classes.map((_class) => {
+									return <FormControlLabel
+										key={_class}
+										value={classlist[_class].name}
+										control={<Radio />}
+										label={classlist[_class].name} />;
+								})
+							}
+							{/* <FormControlLabel
 								value="disabled"
 								disabled
 								control={<Radio />}
 								label="W21A"
-							/>
+							/> */}
 						</RadioGroup>
 					</FormControl>
 				</ExpansionPanelDetails>

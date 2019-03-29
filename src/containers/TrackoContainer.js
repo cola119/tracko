@@ -10,6 +10,7 @@ import { mapboxConfig } from '../mapbox/config';
 class TrackoContainer extends Component {
 	componentDidMount() {
 		const { actions } = this.props;
+		actions.loadClassList();
 		actions.loadUserlist();
 		actions.loadUserLocations();
 	}
@@ -17,15 +18,14 @@ class TrackoContainer extends Component {
 	render() {
 		const token = mapboxConfig.token;
 		const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, actions } = this.props;
-		// console.log(LeftDrawerReducer);
-		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined) {
+		// console.log(FirebaseDbReducer);
+		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined || FirebaseDbReducer.classlist === undefined) {
 			return <div>loading</div>;
 		}
 		return (
 			<div>
 				<LeftDrawer
-					compName="第n回日本学生オリエンテーリング選手権大会"
-					onClassChange={actions.onClassChange}/>
+				compName="第n回日本学生オリエンテーリング選手権大会"/>
 				<Map
 					viewport={MapReducer.viewport}
 					token={token}

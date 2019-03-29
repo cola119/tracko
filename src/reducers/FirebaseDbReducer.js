@@ -15,12 +15,18 @@ const FirebaseDbReducer = (state = initialAppState, action) => {
 				userlocations: userlocations,
 			}
 		case actionTypes.USERLIST_RECIEVE_DATA:
-			// const users = ["user1", "user2"];
 			const users = Object.keys(action.userlist);
 			return {
 				...state,
 				users: users,
 				userlist: action.userlist,
+			}
+		case actionTypes.CLASSLIST_RECIEVE_DATA:
+			const classes = Object.keys(action.classlist);
+			return {
+				...state,
+				classes: classes,
+				classlist: action.classlist,
 			}
 		default:
 			return state;

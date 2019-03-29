@@ -1,7 +1,6 @@
 import * as actionTypes from '../utils/actionTypes';
 
 const initialAppState = {
-	// value: 'ME'
 };
 
 const LeftDrawerReducer = (state = initialAppState, action) => {

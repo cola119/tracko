@@ -29,6 +29,8 @@ const LeftExpansionPanel = (props) => {
 			<ClassesExpansionPanel
 				classes={classes}
 				title="Classes"
+				_classes={props._classes}
+				classlist={props.classlist}
 				onClassChange={props.onClassChange}
 				selectedClass={props.selectedClass}/>
 
