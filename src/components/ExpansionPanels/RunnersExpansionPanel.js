@@ -13,16 +13,26 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Avatar from '@material-ui/core/Avatar';
+import ImageIcon from '@material-ui/icons/Image';
+import WorkIcon from '@material-ui/icons/Work';
+import BeachAccessIcon from '@material-ui/icons/BeachAccess';
+import Button from '@material-ui/core/Button';
+
+
 const styles = theme => ({
-	root: {
-		display: 'flex',
+	expansionPanelDetailsContent: {
+		paddingLeft: 0,
+		paddingRight: 0
 	},
-	// formControl: {
-	// 	margin: theme.spacing.unit * 3,
-	// },
-	// group: {
-	// 	margin: `${theme.spacing.unit}px 0`,
-	// },
+	root: {
+		width: '100%',
+		maxWidth: 200,
+		backgroundColor: theme.palette.background.paper,
+	},
 });
 
 const RunnersExpansionPanel = (props) => {
@@ -35,28 +45,52 @@ const RunnersExpansionPanel = (props) => {
 					{title}
 				</Typography>
 			</ExpansionPanelSummary>
-			<ExpansionPanelDetails>
-				<FormControl component="fieldset" className={classes.formControl}>
+			<ExpansionPanelDetails className={classes.expansionPanelDetailsContent}>
+				<List className={classes.root}>
 					{
 						runners.filter((runner) => {
 							return runnerlist[runner].class === props.selectedClass
 						}).map((runner) => {
 							return (
-								<FormControlLabel
-									key={runner}
-									control={
-										<Checkbox
-											// checked={true}
-											// onChange={this.handleChange('gilad')}
-											value={runnerlist[runner].name}
-										/>
-									}
-									label={runnerlist[runner].name}
-								/>
+								<ListItem key={runner}>
+									<Avatar style={{backgroundColor: runnerlist[runner].color}}></Avatar>
+									<ListItemText
+										primary={runnerlist[runner].name}
+										secondary={
+											<React.Fragment>
+												{runnerlist[runner].club}
+												<Button size="small">view all</Button>
+											</React.Fragment>
+										}
+									/>
+
+								</ListItem>
 							);
 						})
 					}
-				</FormControl>
+				</List>
+
+				{/* <FormControl component="fieldset" className={classes.formControl}>
+					{
+						runners.filter((runner) => {
+					return runnerlist[runner].class === props.selectedClass
+						}).map((runner) => {
+					return (
+					<FormControlLabel
+					key={runner}
+					control={
+					<Checkbox
+					// checked={true}
+					// onChange={this.handleChange('gilad')}
+					value={runnerlist[runner].name}
+					/>
+					}
+					label={runnerlist[runner].name}
+					/>
+					);
+						})
+					}
+				</FormControl> */}
 			</ExpansionPanelDetails>
 		</ExpansionPanel>
 	);
