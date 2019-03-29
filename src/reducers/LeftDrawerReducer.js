@@ -10,7 +10,7 @@ const LeftDrawerReducer = (state = initialAppState, action) => {
 			// console.log(action.value.target.value);
 			return {
 				...state,
-				value: action.value.target.value
+				selectedClass: action.value.target.value
 			};
 		case actionTypes.ON_VIEWALL_CHANGE:
 			// console.log(action.viewallFlag);

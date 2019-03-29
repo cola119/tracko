@@ -2,9 +2,7 @@ import React from 'react';
 import { SVGOverlay, BaseControl } from 'react-map-gl';
 
 const userPointerCircleStyle = {
-	fill: "blue",
-	fillOpacity: 0.5,
-	stroke: "blue",
+	fillOpacity: 0.7,
 	strokeWidth: 2,
 }
 
@@ -24,15 +22,15 @@ const getUserPointerPath = (project, userlocation, tailLength, viewallFlag) => {
 class UserPointer extends BaseControl {
 	redraw = ({project}) => {
 		const { viewport } = this._context;
-		const { user, name, userlocation, viewallFlag } = this.props;
-		// console.log(userlocation);
+		const { user, userinfo, userlocation, viewallFlag } = this.props;
 		if (userlocation === undefined) return;
 		const [cx, cy] = project([userlocation[userlocation.length-1].long, userlocation[userlocation.length-1].lat]);
 		const tailLength = viewallFlag ? userlocation.length : 20;
 		return (
 			<g>
-				<path d={getUserPointerPath(project, userlocation, tailLength)} stroke="lightgreen" strokeWidth="5" fill="none"/>
-				<circle cx={cx} cy={cy} r={viewport.zoom/2}  style={userPointerCircleStyle} />
+				<text x={cx} y={cy-viewport.zoom} fill={userinfo.color} fontSize={viewport.zoom}>{userinfo.name}</text>
+				<path d={getUserPointerPath(project, userlocation, tailLength)} stroke={userinfo.color} strokeWidth="5" fill="none" strokeOpacity="0.7"/>
+				<circle cx={cx} cy={cy} r={viewport.zoom/2}  style={{fill: userinfo.color, stroke: userinfo.color, ...userPointerCircleStyle}} />
 			</g>
 		)
 	}

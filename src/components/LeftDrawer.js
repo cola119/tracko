@@ -135,9 +135,10 @@ class LeftDrawer extends React.Component {
 						runners={FirebaseDbReducer.users}
 						runnerlist={FirebaseDbReducer.userlist}
 						onClassChange={actions.onClassChange}
+
 						viewallFlags={LeftDrawerReducer.viewallFlags}
 						onViewallChange={actions.onViewallChange}
-						selectedClass={(LeftDrawerReducer.value === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.value}/>
+						selectedClass={(LeftDrawerReducer.selectedClass === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.selectedClass}/>
 
 				</Drawer>
 				<main
