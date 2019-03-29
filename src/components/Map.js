@@ -14,12 +14,14 @@ const Map = (props) => {
 			onViewportChange={props.onViewportChange}>
 			<BackgroundImage />
 			{
-				props.users.map((user) => {
+				props.users.filter((user) => {
+					return props.userlist[user].class === props.selectedClass
+				}).map((user) => {
 					return (
 						<UserPointer
 							key={user}
 							user={user}
-							name={props.userlist[user].name}
+							userinfo={props.userlist[user]}
 							userlocation={props.userlocations[user]} />
 					);
 				})

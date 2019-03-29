@@ -9,7 +9,7 @@ const LeftDrawerReducer = (state = initialAppState, action) => {
 			// console.log(action.value.target.value);
 			return {
 				...state,
-				value: action.value.target.value
+				selectedClass: action.value.target.value
 			};
 		default:
 			return state;
