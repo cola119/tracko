@@ -18,7 +18,7 @@ class TrackoContainer extends Component {
 	render() {
 		const token = mapboxConfig.token;
 		const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, actions } = this.props;
-		// console.log(FirebaseDbReducer);
+		// console.log(LeftDrawerReducer);
 		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined || FirebaseDbReducer.classlist === undefined) {
 			return <div>loading</div>;
 		}
@@ -32,7 +32,8 @@ class TrackoContainer extends Component {
 					onViewportChange={(viewport) => actions.onViewportChange(viewport)}
 					users={FirebaseDbReducer.users}
 					userlist={FirebaseDbReducer.userlist}
-					userlocations={FirebaseDbReducer.userlocations} />
+					userlocations={FirebaseDbReducer.userlocations}
+					selectedClass={(LeftDrawerReducer.selectedClass === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.selectedClass}/>
 			</div>
 		);
 	}
