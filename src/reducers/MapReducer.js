@@ -1,8 +1,7 @@
 import * as actionTypes from '../utils/actionTypes';
 
-
-// const size = { width: "100%", height: "200px", };
-const center = { latitude: 35.6053182, longitude: 139.6923339, };
+const center = { latitude: 37.33241210551455, longitude: -122.03050892962335, };	// apple
+// const center = { latitude: 35.6053182, longitude: 139.6923339, };	// ooo
 const zoom = { zoom: 13 };
 
 const initialAppState = {

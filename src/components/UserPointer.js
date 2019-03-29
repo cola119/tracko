@@ -8,8 +8,9 @@ const userPointerCircleStyle = {
 	strokeWidth: 2,
 }
 
+// userlocation === undefinedの処理
 const getUserPointerPath = (project, userlocation, pointNum) => {
-	// pointNum未満のときバグ
+	if (userlocation === undefined) return "";
 	const data = userlocation.length <= pointNum ? userlocation : userlocation.slice(userlocation.length-pointNum, userlocation.length);
 	const path = data.reduce((prev, curr, index, array) => {
 		const [x, y] = project([curr.long, curr.lat]);
@@ -25,6 +26,7 @@ class UserPointer extends BaseControl {
 		const { viewport } = this._context;
 		const { user, name, userlocation } = this.props;
 		// console.log(userlocation);
+		if (userlocation === undefined) return;
 		const [cx, cy] = project([userlocation[userlocation.length-1].long, userlocation[userlocation.length-1].lat]);
 		return (
 			<g>
