@@ -6,6 +6,7 @@
 .pnp.js
 src/firebase/config.js
 src/mapbox/config.js
+src/img
 
 # testing
 /coverage
