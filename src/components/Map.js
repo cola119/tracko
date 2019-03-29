@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMapGL from 'react-map-gl';
 import UserPointer from '../components/UserPointer'
+import BackgroundImage from '../components/BackgroundImage'
 
 const Map = (props) => {
 	// console.log(props);
@@ -11,6 +12,7 @@ const Map = (props) => {
 			{...props.viewport}
 			mapboxApiAccessToken={props.token}
 			onViewportChange={props.onViewportChange}>
+			<BackgroundImage />
 			{
 				props.users.map((user) => {
 					return (
