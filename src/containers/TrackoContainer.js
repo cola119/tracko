@@ -5,6 +5,7 @@ import * as actions from '../actions';
 
 import Map from '../components/Map'
 import LeftDrawer from '../components/LeftDrawer'
+import BottomSlider from '../components/BottomSlider'
 import { mapboxConfig } from '../mapbox/config';
 
 class TrackoContainer extends Component {
@@ -17,7 +18,8 @@ class TrackoContainer extends Component {
 
 	render() {
 		const token = mapboxConfig.token;
-		const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, actions } = this.props;
+		const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, BottomSliderReducer, actions } = this.props;
+		// console.log(BottomSliderReducer);
 		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined || FirebaseDbReducer.classlist === undefined) {
 			return <div>loading</div>;
 		}
@@ -25,10 +27,14 @@ class TrackoContainer extends Component {
 			<div>
 				<LeftDrawer
 				compName="第n回日本学生オリエンテーリング選手権大会"/>
+				<BottomSlider
+					sliderValue={BottomSliderReducer.sliderValue}
+					onBottomSliderChange={actions.onBottomSliderChange} />
 				<Map
 					viewport={MapReducer.viewport}
 					token={token}
 					onViewportChange={(viewport) => actions.onViewportChange(viewport)}
+					sliderValue={BottomSliderReducer.sliderValue}
 					users={FirebaseDbReducer.users}
 					userlist={FirebaseDbReducer.userlist}
 					userlocations={FirebaseDbReducer.userlocations}

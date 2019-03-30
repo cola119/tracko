@@ -22,14 +22,19 @@ const getUserPointerPath = (project, userlocation, tailLength, viewallFlag) => {
 class UserPointer extends BaseControl {
 	redraw = ({project}) => {
 		const { viewport } = this._context;
-		const { user, userinfo, userlocation, viewallFlag } = this.props;
+		const { user, userinfo, userlocation, viewallFlag, sliderValue } = this.props;
 		if (userlocation === undefined) return;
-		const [cx, cy] = project([userlocation[userlocation.length-1].long, userlocation[userlocation.length-1].lat]);
+
+		// データを取得するたびに呼ばれ、userlocation.lengthが1増える
+		// これと連動してsliderValueも増やせばスライダーが動く？→sliderValue最大値は固定なので動かさない
+		const pointOfuserlocation = parseInt((userlocation.length-1) * sliderValue / 100);
+		const [cx, cy] = project([userlocation[pointOfuserlocation].long, userlocation[pointOfuserlocation].lat]);
 		const tailLength = viewallFlag ? userlocation.length : 20;
+
 		return (
 			<g>
 				<text x={cx} y={cy-viewport.zoom} fill={userinfo.color} fontSize={viewport.zoom}>{userinfo.name}</text>
-				<path d={getUserPointerPath(project, userlocation, tailLength)} stroke={userinfo.color} strokeWidth="5" fill="none" strokeOpacity="0.7"/>
+				<path d={getUserPointerPath(project, userlocation.slice(0, pointOfuserlocation), tailLength)} stroke={userinfo.color} strokeWidth="5" fill="none" strokeOpacity="0.7"/>
 				<circle cx={cx} cy={cy} r={viewport.zoom/2}  style={{fill: userinfo.color, stroke: userinfo.color, ...userPointerCircleStyle}} />
 			</g>
 		)

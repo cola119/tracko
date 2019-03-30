@@ -23,7 +23,8 @@ const Map = (props) => {
 							user={user}
 							viewallFlag={props.viewallFlags[user]}
 							userinfo={props.userlist[user]}
-							userlocation={props.userlocations[user]} />
+							userlocation={props.userlocations[user]}
+							sliderValue={props.sliderValue} />
 					);
 				})
 			}
