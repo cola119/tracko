@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 
-import Map from '../components/Map'
-import LeftDrawer from '../components/LeftDrawer'
-import BottomSlider from '../components/BottomSlider'
+import Map from '../components/Map';
+import LeftDrawer from '../components/LeftDrawer';
+import BottomSlider from '../components/BottomSlider';
+import LiveOrRecFab from '../components/LiveOrRecFab';
 import { mapboxConfig } from '../mapbox/config';
 
 class TrackoContainer extends Component {
@@ -18,8 +19,8 @@ class TrackoContainer extends Component {
 
 	render() {
 		const token = mapboxConfig.token;
-		const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, BottomSliderReducer, actions } = this.props;
-		// console.log(BottomSliderReducer);
+		const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, BottomSliderReducer, LiveOrRecFabReducer, actions } = this.props;
+		console.log(LiveOrRecFabReducer);
 		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined || FirebaseDbReducer.classlist === undefined) {
 			return <div>loading</div>;
 		}
@@ -40,6 +41,10 @@ class TrackoContainer extends Component {
 					userlocations={FirebaseDbReducer.userlocations}
 					viewallFlags={LeftDrawerReducer.viewallFlags}
 					selectedClass={(LeftDrawerReducer.selectedClass === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.selectedClass}/>
+				<LiveOrRecFab
+					liveFlag={LiveOrRecFabReducer.liveFlag}
+					onLiveOrRecChange={actions.onLiveOrRecChange}/>
+
 			</div>
 		);
 	}
