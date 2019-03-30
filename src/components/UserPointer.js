@@ -26,9 +26,9 @@ class UserPointer extends BaseControl {
 		if (userlocation === undefined) return;
 
 		// データを取得するたびに呼ばれ、userlocation.lengthが1増える
-		// これと連動してsliderValueも増やせばスライダーが動く？→sliderValue最大値は固定なので動かさない
-		const pointOfuserlocation = parseInt((userlocation.length-1) * sliderValue / 100);
-		const [cx, cy] = project([userlocation[pointOfuserlocation].long, userlocation[pointOfuserlocation].lat]);
+		// 停止する？
+		const pointOfuserlocation = parseInt((userlocation.length) * sliderValue / 100);
+		const [cx, cy] = project([userlocation[pointOfuserlocation-1].long, userlocation[pointOfuserlocation-1].lat]);
 		const tailLength = viewallFlag ? userlocation.length : 20;
 
 		return (

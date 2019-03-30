@@ -16,6 +16,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
 import ImageIcon from '@material-ui/icons/Image';
 import WorkIcon from '@material-ui/icons/Work';
@@ -53,24 +54,28 @@ const RunnersExpansionPanel = (props) => {
 							return runnerlist[runner].class === props.selectedClass
 						}).map((runner) => {
 							return (
-								<ListItem key={runner}>
-									<Avatar style={{backgroundColor: runnerlist[runner].color}}></Avatar>
-									<ListItemText
-										primary={runnerlist[runner].name}
-										secondary={
-											<React.Fragment>
-												{runnerlist[runner].club}
-												<Button
-													size="small"
-													onClick={(e) => onViewallChange(e, runner, viewallFlags[runner])}>view all</Button>
-											</React.Fragment>
-										}
-									/>
-
-								</ListItem>
+								<React.Fragment key={runner}>
+									<Divider />
+									<ListItem>
+										<Avatar style={{backgroundColor: runnerlist[runner].color}}></Avatar>
+										<ListItemText
+											primary={runnerlist[runner].name}
+											secondary={
+												<React.Fragment>
+													{runnerlist[runner].club}
+													<Button
+														size="small"
+														onClick={(e) => onViewallChange(e, runner, viewallFlags[runner])}>view all</Button>
+												</React.Fragment>
+											}
+										/>
+									</ListItem>
+									{/* <Divider /> */}
+								</React.Fragment>
 							);
 						})
 					}
+					<Divider />
 				</List>
 
 				{/* <FormControl component="fieldset" className={classes.formControl}>
