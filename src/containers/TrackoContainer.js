@@ -19,8 +19,9 @@ class TrackoContainer extends Component {
 
 	render() {
 		const token = mapboxConfig.token;
-		const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, BottomSliderReducer, LiveOrRecFabReducer, actions } = this.props;
-		console.log(LiveOrRecFabReducer);
+		const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, SettingsReducer, actions } = this.props;
+		// const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, BottomSliderReducer, LiveOrRecFabReducer, actions } = this.props;
+		// console.log(SettingsReducer);
 		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined || FirebaseDbReducer.classlist === undefined) {
 			return <div>loading</div>;
 		}
@@ -29,20 +30,20 @@ class TrackoContainer extends Component {
 				<LeftDrawer
 				compName="第n回日本学生オリエンテーリング選手権大会"/>
 				<BottomSlider
-					sliderValue={BottomSliderReducer.sliderValue}
+					sliderValue={SettingsReducer.sliderValue}
 					onBottomSliderChange={actions.onBottomSliderChange} />
 				<Map
 					viewport={MapReducer.viewport}
 					token={token}
 					onViewportChange={(viewport) => actions.onViewportChange(viewport)}
-					sliderValue={BottomSliderReducer.sliderValue}
+					sliderValue={SettingsReducer.sliderValue}
 					users={FirebaseDbReducer.users}
 					userlist={FirebaseDbReducer.userlist}
 					userlocations={FirebaseDbReducer.userlocations}
 					viewallFlags={LeftDrawerReducer.viewallFlags}
 					selectedClass={(LeftDrawerReducer.selectedClass === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.selectedClass}/>
 				<LiveOrRecFab
-					liveFlag={LiveOrRecFabReducer.liveFlag}
+					liveFlag={SettingsReducer.liveFlag}
 					onLiveOrRecChange={actions.onLiveOrRecChange}/>
 
 			</div>
