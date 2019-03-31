@@ -1,38 +1,21 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import EventContainer from './EventContainer';
-
+import Mainpage from '../components/main/Mainpage';
+import Aboutpage from '../components/main/Aboutpage';
 
 class TrackoContainer extends Component {
 	render() {
 		return (
 			<BrowserRouter>
 				<div>
-					<Route exact path='/' component={Home} />
-					<Route path='/about' component={About} />
-					<Route path='/events' component={EventContainer} />
+					<Route exact path='/' component={Mainpage} />
+					<Route path='/about' component={Aboutpage} />
+					<Route path='/event' component={EventContainer} />
 				</div>
 			</BrowserRouter>
 		);
 	}
 }
-
-const Home = () => (
-  <div>
-	  <h2>Home</h2>
-	  <p>Welcome to ようこそ</p>
-	  <ul>
-		  <li><Link to='/'>Home</Link></li>
-		  <li><Link to='/about'>About</Link></li>
-		  <li><Link to='/events'>events</Link></li>
-	  </ul>
-  </div>
-)
-const About = () => (
-  <div>
-	  <h2>About</h2>
-	  <p>フレンズに投票するページです</p>
-  </div>
-)
 
 export default TrackoContainer;
