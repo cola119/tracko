@@ -9,7 +9,7 @@ import BottomSlider from '../components/BottomSlider';
 import LiveOrRecFab from '../components/LiveOrRecFab';
 import { mapboxConfig } from '../mapbox/config';
 
-class TrackoEventsContainer extends Component {
+class EventContainer extends Component {
 	componentDidMount() {
 		const { actions } = this.props;
 		actions.loadClassList();
@@ -61,4 +61,4 @@ const mapDispatch = (dispatch) => {
 	};
 };
 
-export default connect(mapStateToProps, mapDispatch)(TrackoEventsContainer);
+export default connect(mapStateToProps, mapDispatch)(EventContainer);
