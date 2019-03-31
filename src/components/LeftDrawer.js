@@ -21,6 +21,7 @@ const drawerWidth = 200;
 
 const styles = theme => ({
 	root: {
+		// touchAction: "none",
 		display: 'flex',
 	},
 	appBar: {
