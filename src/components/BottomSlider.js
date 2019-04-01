@@ -23,11 +23,14 @@ const styles = {
 };
 
 const BottomSlider = (props) => {
-	const { classes, sliderValue, onBottomSliderChange } = props;
-
+	const { classes, sliderValue, onBottomSliderChange, playRecFlag, playRecStart } = props;
+	
+	// warning
+	// sliderValueが100になったらsetIntervalを停止したい
+	if(sliderValue === 100 && playRecFlag) playRecStart(null, sliderValue, playRecFlag);
 	return (
 		<div className={classes.root}>
-			<Button color="primary" className={classes.button}>
+			<Button color="primary" className={classes.button} onClick={(e)=>playRecStart(e,sliderValue, !playRecFlag)}>
 				<PlayButtonIcon />
 			</Button>
 			<Slider

@@ -41,7 +41,10 @@ class EventContainer extends Component {
 				compName="第n回日本学生オリエンテーリング選手権大会"/>
 				<BottomSlider
 					sliderValue={SettingsReducer.sliderValue}
-					onBottomSliderChange={actions.onBottomSliderChange} />
+					onBottomSliderChange={actions.onBottomSliderChange}
+					playRecFlag={SettingsReducer.playRecFlag}
+					playRecStart={actions.playRecStart}
+				/>
 				<LiveOrRecFab
 					liveFlag={SettingsReducer.liveFlag}
 					onLiveOrRecChange={actions.onLiveOrRecChange}/>
