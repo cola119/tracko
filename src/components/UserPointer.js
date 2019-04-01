@@ -28,7 +28,8 @@ class UserPointer extends BaseControl {
 		// データを取得するたびに呼ばれ、userlocation.lengthが1増える
 		// 停止する？
 		const pointOfuserlocation = parseInt((userlocation.length) * sliderValue / 100);
-		const [cx, cy] = project([userlocation[pointOfuserlocation-1].long, userlocation[pointOfuserlocation-1].lat]);
+		const offset = (pointOfuserlocation == 0) ? 0 : 1
+		const [cx, cy] = project([userlocation[pointOfuserlocation-offset].long, userlocation[pointOfuserlocation-offset].lat]);
 		const tailLength = viewallFlag ? userlocation.length : 20;
 
 		return (
