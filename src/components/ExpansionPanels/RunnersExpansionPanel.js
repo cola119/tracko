@@ -4,6 +4,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import InboxIcon from '@material-ui/icons/People';
 
 import { withStyles } from '@material-ui/core/styles';
 import FormLabel from '@material-ui/core/FormLabel';
@@ -34,6 +35,9 @@ const styles = theme => ({
 		maxWidth: 200,
 		backgroundColor: theme.palette.background.paper,
 	},
+	title: {
+		marginLeft: "10px"
+	},
 });
 
 const RunnersExpansionPanel = (props) => {
@@ -43,7 +47,9 @@ const RunnersExpansionPanel = (props) => {
 	return (
 		<ExpansionPanel>
 			<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-				<Typography>
+				<InboxIcon />
+				<Typography className={classes.title}>
+					{/* <ListItemIcon><InboxIcon />Runners</ListItemIcon> */}
 					{title}
 				</Typography>
 			</ExpansionPanelSummary>
@@ -63,9 +69,17 @@ const RunnersExpansionPanel = (props) => {
 											secondary={
 												<React.Fragment>
 													{runnerlist[runner].club}
-													<Button
-														size="small"
-														onClick={(e) => onViewallChange(e, runner, viewallFlags[runner])}>view all</Button>
+													<FormControlLabel
+														control={
+															<Checkbox
+																checked={(viewallFlags[runner] === undefined) ? false : viewallFlags[runner]}
+																value="checked"
+																style={{color: runnerlist[runner].color}}
+																onChange={(e) => onViewallChange(e, runner, viewallFlags[runner])}
+															/>
+														}
+														label="ViewAll"
+													/>
 												</React.Fragment>
 											}
 										/>
