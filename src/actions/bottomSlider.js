@@ -7,7 +7,7 @@ export const onBottomSliderChange = (event, value) => ({
 
 let timer = null;
 export const playRecStart = (e, sliderValue, playRecFlag) => async dispatch => {
-	console.log(sliderValue, playRecFlag);
+	// console.log(sliderValue, playRecFlag);
 	clearInterval(timer);
 	if(sliderValue < 100 && playRecFlag) {
 		timer = setInterval(() => {

@@ -9,7 +9,7 @@ const initialAppState = {
 const SettingsReducer = (state = initialAppState, action) => {
 	switch (action.type) {
 		case actionTypes.ON_BOTTOM_SLIDER_CHANGE:
-			console.log(action.value);
+			// console.log(action.value);
 			return {
 				...state,
 				sliderValue: action.value,
