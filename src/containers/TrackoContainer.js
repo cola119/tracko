@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import ScrollToTop from '../components/ScrollToTop';
 import EventContainer from './EventContainer';
 import Mainpage from '../components/main/Mainpage';
 import Aboutpage from '../components/main/Aboutpage';
@@ -16,16 +17,20 @@ class TrackoContainer extends Component {
 
 	render() {
 		const { FirebaseDbReducer } = this.props;
-		if(FirebaseDbReducer.complist === undefined) return <div>loading</div>;
+		if(FirebaseDbReducer.complist === undefined) return <div></div>;
 		// console.log(FirebaseDbReducer.complist);
 		return (
 			<BrowserRouter>
-				<Switch>
-					<Route exact path='/' component={Mainpage} />
-					<Route path='/about' component={Aboutpage} />
-					<Route path='/events/:id' render={({match}) => <EventContainer compList={FirebaseDbReducer.complist} match={match} />} />
-					<Route component={NoMatch} />
-				</Switch>
+				<ScrollToTop>
+					<Switch>
+						<Route exact path='/' render={() => <Mainpage compList={FirebaseDbReducer.complist}/>} />
+						{/* <Route exact path='/' component={Mainpage} /> */}
+						<Route path='/about' component={Aboutpage} />
+						<Route path='/events/:id' render={({match}) => <EventContainer compList={FirebaseDbReducer.complist} match={match} />} />
+						<Route component={NoMatch} />
+					</Switch>
+				</ScrollToTop>
+
 			</BrowserRouter>
 		);
 	}
