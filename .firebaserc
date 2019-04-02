@@ -1,1 +1,6 @@
-{}
+{
+  "projects": {
+    "staging": "tracko-development",
+    "default": "tracko-59cb8"
+  }
+}
