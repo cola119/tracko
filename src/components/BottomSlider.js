@@ -10,7 +10,7 @@ const styles = {
 	root: {
 		display: 'flex',
 		width: '100%',
-		position: 'absolute',
+		position: 'fixed',
 		bottom: '0px',
 		padding: '20px 30px'
 	},

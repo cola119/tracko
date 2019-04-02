@@ -23,6 +23,7 @@ const styles = theme => ({
 	root: {
 		// touchAction: "none",
 		display: 'flex',
+		position: 'fixed',
 	},
 	appBar: {
 		transition: theme.transitions.create(['margin', 'width'], {
