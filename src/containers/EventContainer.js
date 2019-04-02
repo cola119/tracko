@@ -12,6 +12,7 @@ import { mapboxConfig } from '../mapbox/config';
 class EventContainer extends Component {
 	componentDidMount() {
 		const { actions } = this.props;
+		actions.loadCompList();
 		actions.loadClassList();
 		actions.loadUserlist();
 		actions.loadUserLocations();
@@ -20,8 +21,7 @@ class EventContainer extends Component {
 	render() {
 		const token = mapboxConfig.token;
 		const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, SettingsReducer, actions } = this.props;
-		// const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, BottomSliderReducer, LiveOrRecFabReducer, actions } = this.props;
-		// console.log(SettingsReducer);
+		console.log(FirebaseDbReducer);
 		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined || FirebaseDbReducer.classlist === undefined) {
 			return <div>loading</div>;
 		}

@@ -30,6 +30,13 @@ const FirebaseDbReducer = (state = initialAppState, action) => {
 				classes: classes,
 				classlist: action.classlist,
 			}
+		case actionTypes.COMPLIST_RECIEVE_DATA:
+			const comps = Object.keys(action.complist);
+			return {
+				...state,
+				comps: comps,
+				complist: action.complist,
+			}
 		default:
 			return state;
 	};

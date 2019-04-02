@@ -33,3 +33,14 @@ const loadClassListSuccess = (snapshot) => ({
 	type: actionTypes.CLASSLIST_RECIEVE_DATA,
 	classlist: snapshot.val()
 });
+
+export const loadCompList = () => async dispatch => {
+	const ref = firebaseDb.ref("comps");
+	ref.once('value', (snapshot) => {
+		dispatch(loadCompListSuccess(snapshot))
+	});
+}
+const loadCompListSuccess = (snapshot) => ({
+	type: actionTypes.COMPLIST_RECIEVE_DATA,
+	complist: snapshot.val()
+});
