@@ -4,6 +4,7 @@ import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import InboxIcon from '@material-ui/icons/Terrain';
 
 import { withStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
@@ -16,6 +17,9 @@ const styles = theme => ({
 	root: {
 		display: 'flex',
 	},
+	title: {
+		marginLeft: "10px"
+	}
 	// formControl: {
 	// 	margin: theme.spacing.unit * 3,
 	// },
@@ -35,7 +39,8 @@ class ClassesExpansionPanel extends React.Component {
 		return (
 			<ExpansionPanel>
 				<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-					<Typography>
+					<InboxIcon />
+					<Typography className={classes.title}>
 						{/* <ListItemIcon><InboxIcon />Runners</ListItemIcon> */}
 						{title}
 					</Typography>
