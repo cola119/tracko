@@ -63,13 +63,14 @@ const styles = theme => ({
 	},
 });
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const Mainpage = (props) => {
-	const { classes } = props;
+	const { classes, compList } = props;
+	const cards = Object.keys(compList);
+	// const cards = [1, 2];
 
-	const handleToEventPage = () => {
-		props.history.push('/event')
+	const handleToEventPage = (e, id) => {
+		props.history.push('/events/'+id);
 	}
 
 	return (
@@ -98,8 +99,8 @@ const Mainpage = (props) => {
 						<div className={classes.heroButtons}>
 							<Grid container spacing={16} justify="center">
 								<Grid item>
-									<Button variant="contained" color="primary">
-										View demo
+									<Button variant="contained" color="primary" onClick={(e)=>handleToEventPage(e,'demo')}>
+										デモを見る
 									</Button>
 								</Grid>
 								{/* <Grid item>
@@ -124,18 +125,18 @@ const Mainpage = (props) => {
 									/>
 									<CardContent className={classes.cardContent}>
 										<Typography gutterBottom variant="h5" component="h2">
-											Heading
+											{compList[card].name}
 										</Typography>
 										<Typography>
-											This is a media card. You can use this section to describe the content.
+											{compList[card].abstract}
 										</Typography>
 									</CardContent>
 									<CardActions>
-										<Button size="small" color="primary" onClick={handleToEventPage}>
+										<Button size="small" color="primary" onClick={(e)=>handleToEventPage(e,card)} disabled={!compList[card].public}>
 											View
 										</Button>
-										<Button size="small" color="primary">
-											Edit
+										<Button size="small" color="primary" disabled>
+											GPXダウンロード
 										</Button>
 									</CardActions>
 								</Card>
