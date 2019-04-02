@@ -68,8 +68,8 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const Mainpage = (props) => {
 	const { classes } = props;
 
-	const handleToEventPage = () => {
-		props.history.push('/event')
+	const handleToDemoPage = () => {
+		props.history.push('/events/demo')
 	}
 
 	return (
@@ -98,7 +98,7 @@ const Mainpage = (props) => {
 						<div className={classes.heroButtons}>
 							<Grid container spacing={16} justify="center">
 								<Grid item>
-									<Button variant="contained" color="primary">
+									<Button variant="contained" color="primary" onClick={handleToDemoPage}>
 										View demo
 									</Button>
 								</Grid>
@@ -131,7 +131,7 @@ const Mainpage = (props) => {
 										</Typography>
 									</CardContent>
 									<CardActions>
-										<Button size="small" color="primary" onClick={handleToEventPage}>
+										<Button size="small" color="primary" onClick={handleToDemoPage}>
 											View
 										</Button>
 										<Button size="small" color="primary">

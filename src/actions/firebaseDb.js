@@ -1,8 +1,8 @@
 import * as actionTypes from '../utils/actionTypes';
 import { firebaseDb } from '../firebase/';
 
-export const loadUserLocations = () => async dispatch => {
-	const ref = firebaseDb.ref("user-locations");
+export const loadUserLocations = (eventId) => async dispatch => {
+	const ref = firebaseDb.ref(eventId+"/user-locations");
 	ref.on('value', (snapshot) => {
 		dispatch(loadUserLocationsSuccess(snapshot))
 	});
@@ -12,8 +12,8 @@ const loadUserLocationsSuccess = (snapshot) => ({
 	userlocations: snapshot.val()
 });
 
-export const loadUserlist = () => async dispatch => {
-	const ref = firebaseDb.ref("users");
+export const loadUserlist = (eventId) => async dispatch => {
+	const ref = firebaseDb.ref(eventId+"/users");
 	ref.once('value', (snapshot) => {
 		dispatch(loadUserlistSuccess(snapshot))
 	});
@@ -23,8 +23,8 @@ const loadUserlistSuccess = (snapshot) => ({
 	userlist: snapshot.val()
 });
 
-export const loadClassList = () => async dispatch => {
-	const ref = firebaseDb.ref("classes");
+export const loadClassList = (eventId) => async dispatch => {
+	const ref = firebaseDb.ref(eventId+"/classes");
 	ref.once('value', (snapshot) => {
 		dispatch(loadClassListSuccess(snapshot))
 	});

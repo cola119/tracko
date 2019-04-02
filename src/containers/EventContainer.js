@@ -11,20 +11,22 @@ import { mapboxConfig } from '../mapbox/config';
 
 class EventContainer extends Component {
 	componentDidMount() {
-		const { actions } = this.props;
-		actions.loadCompList();
-		actions.loadClassList();
-		actions.loadUserlist();
-		actions.loadUserLocations();
+		const { actions, match, compList } = this.props;
+		// actions.loadCompList(match.params.id);
+		if(!Object.keys(compList).includes(match.params.id)) return;
+		actions.loadClassList(match.params.id);
+		actions.loadUserlist(match.params.id);
+		actions.loadUserLocations(match.params.id);
 	}
 
 	render() {
 		const token = mapboxConfig.token;
-		const { MapReducer, FirebaseDbReducer, LeftDrawerReducer, SettingsReducer, actions } = this.props;
-		console.log(FirebaseDbReducer);
+		const { match, compList, MapReducer, FirebaseDbReducer, LeftDrawerReducer, SettingsReducer, actions } = this.props;
 		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined || FirebaseDbReducer.classlist === undefined) {
 			return <div>loading</div>;
 		}
+		// console.log(FirebaseDbReducer);
+		// console.log(compList);
 		return (
 			<div>
 				<Map
@@ -38,7 +40,7 @@ class EventContainer extends Component {
 					viewallFlags={LeftDrawerReducer.viewallFlags}
 					selectedClass={(LeftDrawerReducer.selectedClass === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.selectedClass}/>
 				<LeftDrawer
-				compName="第n回日本学生オリエンテーリング選手権大会"/>
+					compName={compList[match.params.id].name}/>
 				<BottomSlider
 					sliderValue={SettingsReducer.sliderValue}
 					onBottomSliderChange={actions.onBottomSliderChange}
