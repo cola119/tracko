@@ -13,6 +13,9 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
+import RadioButtonUnchecked from '@material-ui/icons/RadioButtonUnchecked';
+import RadioButtonChecked from '@material-ui/icons/RadioButtonChecked';
+
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -63,29 +66,55 @@ const RunnersExpansionPanel = (props) => {
 								<React.Fragment key={runner}>
 									<Divider />
 									<ListItem>
-										<Avatar style={{backgroundColor: runnerlist[runner].color}}></Avatar>
+										{/* <Avatar style={{backgroundColor: runnerlist[runner].color}}></Avatar> */}
+										<Checkbox
+											style={{color: runnerlist[runner].color}}
+											icon={<RadioButtonUnchecked fontSize="large" />}
+											checkedIcon={<RadioButtonChecked fontSize="large" />}
+											checked={(viewallFlags[runner] === undefined) ? false : viewallFlags[runner]}
+											onChange={(e) => onViewallChange(e, runner, viewallFlags[runner])}
+											value="checkedA"
+										/>
 										<ListItemText
-											primary={runnerlist[runner].name}
+											primary={
+												<React.Fragment>
+													{runnerlist[runner].name}
+												</React.Fragment>
+											}
 											secondary={
 												<React.Fragment>
 													{runnerlist[runner].club}
-													<FormControlLabel
-														control={
-															<Checkbox
-																checked={(viewallFlags[runner] === undefined) ? false : viewallFlags[runner]}
-																value="checked"
-																style={{color: runnerlist[runner].color}}
-																onChange={(e) => onViewallChange(e, runner, viewallFlags[runner])}
-															/>
-														}
-														label="ViewAll"
-													/>
 												</React.Fragment>
 											}
 										/>
 									</ListItem>
-									{/* <Divider /> */}
 								</React.Fragment>
+								// <React.Fragment key={runner}>
+								// 	<Divider />
+								// 	<ListItem>
+								// 		<Avatar style={{backgroundColor: runnerlist[runner].color}}></Avatar>
+								// 		<ListItemText
+								// 			primary={runnerlist[runner].name}
+								// 			secondary={
+								// 				<React.Fragment>
+								// 					{runnerlist[runner].club}
+								// 				</React.Fragment>
+								// 			}
+								// 		/>
+								// 	</ListItem>
+								// 	<FormControlLabel
+								// 		control={
+								// 			<Checkbox
+								// 				checked={(viewallFlags[runner] === undefined) ? false : viewallFlags[runner]}
+								// 				value="checked"
+								// 				style={{color: runnerlist[runner].color}}
+								// 				onChange={(e) => onViewallChange(e, runner, viewallFlags[runner])}
+								// 			/>
+								// 		}
+								// 		label="ViewAll"
+								// 	/>
+								// 	{/* <Divider /> */}
+								// </React.Fragment>
 							);
 						})
 					}
