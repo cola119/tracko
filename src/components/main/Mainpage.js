@@ -132,7 +132,7 @@ const Mainpage = (props) => {
 										</Typography>
 									</CardContent>
 									<CardActions>
-										<Button size="small" color="primary" onClick={(e)=>handleToEventPage(e,card)}>
+										<Button size="small" color="primary" onClick={(e)=>handleToEventPage(e,card)} disabled={!compList[card].public}>
 											View
 										</Button>
 										<Button size="small" color="primary" disabled>

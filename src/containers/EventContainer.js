@@ -25,6 +25,7 @@ class EventContainer extends Component {
 		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined || FirebaseDbReducer.classlist === undefined) {
 			return <div>loading</div>;
 		}
+		if(compList[match.params.id].public === false) return <div>coming soon</div>
 		// console.log(FirebaseDbReducer);
 		// console.log(compList);
 		return (
