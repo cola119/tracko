@@ -9,6 +9,7 @@ const Map = (props) => {
 		<ReactMapGL
 			width='100%'
 			height='100vh'
+			visible={props.mapViewFlag}
 			{...props.viewport}
 			mapboxApiAccessToken={props.token}
 			onViewportChange={props.onViewportChange}>
@@ -24,7 +25,9 @@ const Map = (props) => {
 							viewallFlag={props.viewallFlags[user]}
 							userinfo={props.userlist[user]}
 							userlocation={props.userlocations[user]}
-							sliderValue={props.sliderValue} />
+							sliderValue={props.sliderValue}
+							pointerRate={props.pointerRate}
+						/>
 					);
 				})
 			}
