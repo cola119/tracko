@@ -140,7 +140,14 @@ class LeftDrawer extends React.Component {
 
 						viewallFlags={LeftDrawerReducer.viewallFlags}
 						onViewallChange={actions.onViewallChange}
-						selectedClass={(LeftDrawerReducer.selectedClass === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.selectedClass}/>
+						selectedClass={(LeftDrawerReducer.selectedClass === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.selectedClass}
+
+						mapViewFlag={LeftDrawerReducer.mapViewFlag}
+						onMapViewChange={actions.onMapViewChange}
+
+						pointerRate={LeftDrawerReducer.pointerRate}
+						onPointerRateChange={actions.onPointerRateChange}
+					/>
 
 				</Drawer>
 				<main

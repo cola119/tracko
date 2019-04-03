@@ -12,6 +12,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 import ClassesExpansionPanel from './ExpansionPanels/ClassesExpansionPanel';
 import RunnersExpansionPanel from './ExpansionPanels/RunnersExpansionPanel';
+import SettingExpansionPanel from './ExpansionPanels/SettingExpansionPanel';
 
 const styles = theme => ({
 	root: {
@@ -42,6 +43,13 @@ const LeftExpansionPanel = (props) => {
 				selectedClass={props.selectedClass}
 				viewallFlags={props.viewallFlags}
 				onViewallChange={props.onViewallChange}
+			/>
+			<SettingExpansionPanel
+				title="Setting"
+				mapViewFlag={props.mapViewFlag}
+				onMapViewChange={props.onMapViewChange}
+				pointerRate={props.pointerRate}
+				onPointerRateChange={props.onPointerRateChange}
 			/>
 
 

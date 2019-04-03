@@ -39,7 +39,10 @@ class EventContainer extends Component {
 					userlist={FirebaseDbReducer.userlist}
 					userlocations={FirebaseDbReducer.userlocations}
 					viewallFlags={LeftDrawerReducer.viewallFlags}
-					selectedClass={(LeftDrawerReducer.selectedClass === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.selectedClass}/>
+					selectedClass={(LeftDrawerReducer.selectedClass === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.selectedClass}
+					mapViewFlag={LeftDrawerReducer.mapViewFlag}
+					pointerRate={LeftDrawerReducer.pointerRate}
+				/>
 				<LeftDrawer
 					compName={compList[match.params.id].name}/>
 				<BottomSlider

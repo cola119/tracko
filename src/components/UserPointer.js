@@ -22,7 +22,7 @@ const getUserPointerPath = (project, userlocation, tailLength, viewallFlag) => {
 class UserPointer extends BaseControl {
 	redraw = ({project}) => {
 		const { viewport } = this._context;
-		const { user, userinfo, userlocation, viewallFlag, sliderValue } = this.props;
+		const { user, userinfo, userlocation, viewallFlag, sliderValue, pointerRate } = this.props;
 		if (userlocation === undefined) return;
 
 		// データを取得するたびに呼ばれ、userlocation.lengthが1増える
@@ -37,7 +37,7 @@ class UserPointer extends BaseControl {
 			<g>
 				<text x={cx} y={cy-viewport.zoom} fill={userinfo.color} fontSize={viewport.zoom}>{userinfo.name}</text>
 				<path d={getUserPointerPath(project, userlocation.slice(0, pointOfuserlocation), tailLength)} stroke={userinfo.color} strokeWidth="5" fill="none" strokeOpacity="0.7"/>
-				<circle cx={cx} cy={cy} r={viewport.zoom/2}  style={{fill: userinfo.color, stroke: userinfo.color, ...userPointerCircleStyle}} />
+				<circle cx={cx} cy={cy} r={viewport.zoom/2*pointerRate}  style={{fill: userinfo.color, stroke: userinfo.color, ...userPointerCircleStyle}} />
 			</g>
 		)
 	}
