@@ -25,13 +25,14 @@ class EventContainer extends Component {
 		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined || FirebaseDbReducer.classlist === undefined) {
 			return <div>loading</div>;
 		}
-		if(compList[match.params.id].public === false) return <div>coming soon</div>
-		// console.log(FirebaseDbReducer);
-		// console.log(compList);
+		if(compList[match.params.id].public === false) return <div>coming soon</div>;
+
+		const center = { latitude: compList[match.params.id].center.lat, longitude: compList[match.params.id].center.long, };
+		// console.log(center);
 		return (
 			<div>
 				<Map
-					viewport={MapReducer.viewport}
+					viewport={{...center, ...MapReducer.viewport}}
 					token={token}
 					onViewportChange={(viewport) => actions.onViewportChange(viewport)}
 					sliderValue={SettingsReducer.sliderValue}
@@ -42,6 +43,7 @@ class EventContainer extends Component {
 					selectedClass={(LeftDrawerReducer.selectedClass === undefined) ? FirebaseDbReducer.classlist['class1'].name : LeftDrawerReducer.selectedClass}
 					mapViewFlag={LeftDrawerReducer.mapViewFlag}
 					pointerRate={LeftDrawerReducer.pointerRate}
+					comp={compList[match.params.id]}
 				/>
 				<LeftDrawer
 					compName={compList[match.params.id].name}/>

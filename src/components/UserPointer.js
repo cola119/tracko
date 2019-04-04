@@ -20,7 +20,9 @@ const getUserPointerPath = (project, userlocation, tailLength, viewallFlag) => {
 }
 
 class UserPointer extends BaseControl {
+
 	redraw = ({project}) => {
+
 		const { viewport } = this._context;
 		const { user, userinfo, userlocation, viewallFlag, sliderValue, pointerRate } = this.props;
 		if (userlocation === undefined) return;
