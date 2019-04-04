@@ -2,7 +2,7 @@ import React from 'react';
 import { SVGOverlay, BaseControl } from 'react-map-gl';
 
 const userPointerCircleStyle = {
-	fillOpacity: 0.7,
+	fillOpacity: 0.9,
 	strokeWidth: 2,
 }
 
@@ -37,7 +37,7 @@ class UserPointer extends BaseControl {
 
 		return (
 			<g>
-				<text x={cx} y={cy-viewport.zoom} fill={userinfo.color} fontSize={viewport.zoom}>{userinfo.name}</text>
+				<text x={cx} y={cy-viewport.zoom} fill={userinfo.color} fontSize={viewport.zoom} fontWeight="bold">{userinfo.name}</text>
 				<path d={getUserPointerPath(project, userlocation.slice(0, pointOfuserlocation), tailLength)} stroke={userinfo.color} strokeWidth="5" fill="none" strokeOpacity="0.7"/>
 				<circle cx={cx} cy={cy} r={viewport.zoom/2*pointerRate}  style={{fill: userinfo.color, stroke: userinfo.color, ...userPointerCircleStyle}} />
 			</g>
