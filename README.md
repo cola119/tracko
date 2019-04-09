@@ -2,7 +2,8 @@
 Realtime GPS tracking system for orienteering.
 
 オリエンテーリング競技中の選手の位置をリアルタイムで表示します。  
-React.jsを使ってリファクタリングしました。
+React.jsを使ってリファクタリングしました。  
+https://portfolio.o-app.net/Tracko
 
 # Dependency
 React / Redux / react-map-gl  
@@ -12,7 +13,8 @@ Firebase Realtime Database
 You need to install trako(iOS app) and upload orienteering maps.  
 If you want to use this system, please email me.
 
-in more detail:
+in more detail:  
+https://portfolio.o-app.net/Tracko  
 https://cola119.hatenablog.com/entry/2018/12/15/233344
 
 
@@ -20,4 +22,5 @@ https://cola119.hatenablog.com/entry/2018/12/15/233344
 Kouhei Ueno
 
 # References
+https://portfolio.o-app.net/Tracko  
 https://cola119.hatenablog.com/entry/2018/12/15/23334
