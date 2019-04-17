@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions';
 
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ScrollToTop from '../components/ScrollToTop';
 import EventContainer from './EventContainer';
 import Mainpage from '../components/main/Mainpage';
@@ -17,16 +17,16 @@ class TrackoContainer extends Component {
 
 	render() {
 		const { FirebaseDbReducer } = this.props;
-		if(FirebaseDbReducer.complist === undefined) return <div></div>;
+		if (FirebaseDbReducer.complist === undefined) return <div></div>;
 		// console.log(FirebaseDbReducer.complist);
 		return (
 			<BrowserRouter>
 				<ScrollToTop>
 					<Switch>
-						<Route exact path='/' render={() => <Mainpage compList={FirebaseDbReducer.complist}/>} />
+						<Route exact path='/' render={() => <Mainpage compList={FirebaseDbReducer.complist} />} />
 						{/* <Route exact path='/' component={Mainpage} /> */}
 						<Route path='/about' component={Aboutpage} />
-						<Route path='/events/:id' render={({match}) => <EventContainer compList={FirebaseDbReducer.complist} match={match} />} />
+						<Route path='/events/:id' render={({ match }) => <EventContainer compList={FirebaseDbReducer.complist} match={match} />} />
 						<Route component={NoMatch} />
 					</Switch>
 				</ScrollToTop>
@@ -36,13 +36,13 @@ class TrackoContainer extends Component {
 	}
 }
 function NoMatch({ location }) {
-  return (
-    <div>
-      <h3>
-        No match for <code>{location.pathname}</code>
-      </h3>
-    </div>
-  );
+	return (
+		<div>
+			<h3>
+				No match for <code>{location.pathname}</code>
+			</h3>
+		</div>
+	);
 }
 
 const mapStateToProps = (state) => {

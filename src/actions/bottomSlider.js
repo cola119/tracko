@@ -9,7 +9,7 @@ let timer = null;
 export const playRecStart = (e, sliderValue, playRecFlag) => async dispatch => {
 	// console.log(sliderValue, playRecFlag);
 	clearInterval(timer);
-	if(sliderValue < 100 && playRecFlag) {
+	if (sliderValue < 1000 && playRecFlag) {
 		timer = setInterval(() => {
 			dispatch(playRec(sliderValue))
 		}, 1000);
