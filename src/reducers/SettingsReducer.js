@@ -1,10 +1,13 @@
 import * as actionTypes from '../utils/actionTypes';
 
+const sliderValueDefault = 1000;
+
 const initialAppState = {
-	sliderValue: 100,
+	sliderValue: sliderValueDefault,
 	liveFlag: true,
 	playRecFlag: false
 };
+
 
 const SettingsReducer = (state = initialAppState, action) => {
 	switch (action.type) {
@@ -13,32 +16,32 @@ const SettingsReducer = (state = initialAppState, action) => {
 			return {
 				...state,
 				sliderValue: action.value,
-				liveFlag: (action.value === 100) ? true : false
+				liveFlag: (action.value === sliderValueDefault) ? true : false
 			};
 		case actionTypes.ON_LIVEORREC_CHANGE:
 			// console.log(action.liveFlag);
 			return {
 				...state,
-				sliderValue: (action.liveFlag) ? state.sliderValue : 100,
+				sliderValue: (action.liveFlag) ? state.sliderValue : sliderValueDefault,
 				liveFlag: (action.liveFlag) ? true : !action.liveFlag
 			};
 		case actionTypes.PLAY_REC_SUCCESS:
 			// console.log(state.playRecFlag);
 			return {
 				...state,
-				playRecFlag: (state.sliderValue === 100) ? false : !state.playRecFlag
+				playRecFlag: (state.sliderValue === sliderValueDefault) ? false : !state.playRecFlag
 			};
 		case actionTypes.PLAY_REC:
 			// console.log(state.sliderValue);
-			if(Math.ceil(state.sliderValue+1) === 100) {
+			if (Math.ceil(state.sliderValue + 1) === sliderValueDefault) {
 				return {
 					...state,
-					sliderValue: 100,
+					sliderValue: sliderValueDefault,
 				}
 			}
 			return {
 				...state,
-				sliderValue: (state.playRecFlag) ? state.sliderValue+1 : Math.ceil(state.sliderValue)
+				sliderValue: (state.playRecFlag) ? state.sliderValue + 1 : Math.ceil(state.sliderValue)
 			};
 		default:
 			return state;

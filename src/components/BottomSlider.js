@@ -28,16 +28,17 @@ const BottomSlider = (props) => {
 
 	// warning
 	// sliderValueが100になったらsetIntervalを停止したい
-	if(sliderValue === 100 && playRecFlag) playRecStart(null, sliderValue, playRecFlag);
+	if (sliderValue === 1000 && playRecFlag) playRecStart(null, sliderValue, playRecFlag);
 	return (
 		<div className={classes.root}>
-			<Button color="primary" className={classes.button} onClick={(e)=>playRecStart(e,sliderValue, !playRecFlag)}>
-				{ (playRecFlag) ? <PauseButtonIcon /> : <PlayButtonIcon />}
+			<Button color="primary" className={classes.button} onClick={(e) => playRecStart(e, sliderValue, !playRecFlag)}>
+				{(playRecFlag) ? <PauseButtonIcon /> : <PlayButtonIcon />}
 			</Button>
 			<Slider
 				classes={{ container: classes.slider }}
 				value={sliderValue}
 				aria-labelledby="label"
+				max={1000}
 				onChange={(event, value) => onBottomSliderChange(event, value)}
 			/>
 		</div>
