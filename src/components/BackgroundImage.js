@@ -14,7 +14,7 @@ class BackgroundImage extends BaseControl {
 			<g>
 				{/* <circle cx={x1} cy={y1} r={viewport.zoom/2} /> */}
 				{/* <circle cx={x2} cy={y2} r={viewport.zoom/2} /> */}
-				<image x={x1} y={y1} width={width} height={height} xlinkHref={`${process.env.PUBLIC_URL}/img/${this.props.comp.image.name}`} />
+				<image x={x1} y={y1} width={width} height={height} opacity={0.7} xlinkHref={`${process.env.PUBLIC_URL}/img/${this.props.comp.image.name}`} />
 			</g>
 
 		);
