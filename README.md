@@ -5,6 +5,10 @@ Realtime GPS tracking system for orienteering.
 React.jsを使ってリファクタリングしました。  
 https://portfolio.o-app.net/projects/creations/tracko/  
 
+### 2019/5/20
+設計・コンポーネントの分割について再考、リファクタリング中  
+firebase realtime databaseからfirestoreへ移行
+
 # Dependency
 React / Redux / react-map-gl  
 Firebase Realtime Database
