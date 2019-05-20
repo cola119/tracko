@@ -12,7 +12,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
+// import InputAdornment from '@material-ui/core/InputAdornment';
 
 const styles = theme => ({
 	root: {
@@ -21,12 +21,6 @@ const styles = theme => ({
 	title: {
 		marginLeft: "10px"
 	}
-	// formControl: {
-	// 	margin: theme.spacing.unit * 3,
-	// },
-	// group: {
-	// 	margin: `${theme.spacing.unit}px 0`,
-	// },
 });
 
 class SettingExpansionPanel extends React.Component {
@@ -43,16 +37,13 @@ class SettingExpansionPanel extends React.Component {
 			step: 0.1,
 			min: 0,
 		};
-		// console.log(this.props);
 		const { classes, title, mapViewFlag, onMapViewChange, pointerRate, onPointerRateChange } = this.props;
-		// console.log(this.props._classes);
 
 		return (
 			<ExpansionPanel>
 				<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
 					<InboxIcon />
 					<Typography className={classes.title}>
-						{/* <ListItemIcon><InboxIcon />Runners</ListItemIcon> */}
 						{title}
 					</Typography>
 				</ExpansionPanelSummary>
@@ -68,17 +59,6 @@ class SettingExpansionPanel extends React.Component {
 							}
 							label="背景地図表示"
 						/>
-						{/* <FormControlLabel
-							control={
-								<Switch
-							checked={this.state.checkedB}
-							onChange={this.handleChange('checkedB')}
-							value="checkedB"
-							color="primary"
-								/>
-							}
-							label="Primary"
-						/> */}
 						<TextField
 							id="outlined-number"
 							label="ポインタサイズ"
@@ -90,15 +70,12 @@ class SettingExpansionPanel extends React.Component {
 								shrink: true,
 							}}
 							inputProps={inputProps}
-							InputProps={{
-								endAdornment: <InputAdornment position="end">倍</InputAdornment>,
-							}}
+							// InputProps={{
+							// 	endAdornment: <InputAdornment position="end">倍</InputAdornment>,
+							// }}
 							margin="normal"
 							variant="outlined"
 						/>
-						{/* <FormControlLabel control={<Switch value="checkedC" />} label="Uncontrolled" />
-							<FormControlLabel disabled control={<Switch value="checkedD" />} label="Disabled" />
-						<FormControlLabel disabled control={<Switch checked value="checkedE" />} label="Disabled" /> */}
 					</FormGroup>
 				</ExpansionPanelDetails>
 			</ExpansionPanel>

@@ -7,11 +7,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import InboxIcon from '@material-ui/icons/People';
 
 import { withStyles } from '@material-ui/core/styles';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Checkbox from '@material-ui/core/Checkbox';
 import RadioButtonUnchecked from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonChecked from '@material-ui/icons/RadioButtonChecked';
@@ -21,12 +17,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import Avatar from '@material-ui/core/Avatar';
-import ImageIcon from '@material-ui/icons/Image';
-import WorkIcon from '@material-ui/icons/Work';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
-import Button from '@material-ui/core/Button';
-
 
 const styles = theme => ({
 	expansionPanelDetailsContent: {
@@ -45,14 +35,12 @@ const styles = theme => ({
 
 const RunnersExpansionPanel = (props) => {
 	const { classes, title, runnerlist, runners, viewallFlags, onViewallChange } = props;
-	// console.log(viewallFlags);
 
 	return (
 		<ExpansionPanel>
 			<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
 				<InboxIcon />
 				<Typography className={classes.title}>
-					{/* <ListItemIcon><InboxIcon />Runners</ListItemIcon> */}
 					{title}
 				</Typography>
 			</ExpansionPanelSummary>
@@ -69,7 +57,7 @@ const RunnersExpansionPanel = (props) => {
 										<FormControlLabel
 											control={
 												<Checkbox
-													style={{color: runnerlist[runner].color}}
+													style={{ color: runnerlist[runner].color }}
 													icon={<RadioButtonUnchecked fontSize="large" />}
 													checkedIcon={<RadioButtonChecked fontSize="large" />}
 													checked={(viewallFlags[runner] === undefined) ? false : viewallFlags[runner]}
