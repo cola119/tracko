@@ -6,15 +6,12 @@ const userPointerCircleStyle = {
 	strokeWidth: 2,
 }
 
-// userlocation === undefinedの処理
 const getUserPointerPath = (project, userlocation, tailLength, viewallFlag) => {
 	if (userlocation === undefined) return "";
 	const data = (userlocation.length <= tailLength) ? userlocation : userlocation.slice(userlocation.length - tailLength, userlocation.length);
 	const path = data.reduce((prev, curr, index, array) => {
 		const [x, y] = project([curr.long, curr.lat]);
 		const str = (index === 0 ? 'M' : 'L') + x + ' ' + y;
-		// console.log(index);
-		// console.log(str);
 		return prev + str;
 	}, '')
 	return path;
@@ -25,12 +22,10 @@ class UserPointer extends BaseControl {
 	redraw = ({ project }) => {
 
 		const { viewport } = this._context;
-		const { user, userinfo, userlocation, viewallFlag, sliderValue, pointerRate } = this.props;
+		const { userinfo, userlocation, viewallFlag, sliderValue, pointerRate } = this.props;
 		if (userlocation === undefined) return;
 
 		// データを取得するたびに呼ばれ、userlocation.lengthが1増える
-		// 停止する？
-		// console.log(userlocation.length)
 		const pointOfuserlocation = parseInt((userlocation.length) * sliderValue / 1000);
 		const offset = (pointOfuserlocation === 0) ? 0 : 1
 		try { var [cx, cy] = project([userlocation[pointOfuserlocation - offset].long, userlocation[pointOfuserlocation - offset].lat]); }

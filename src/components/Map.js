@@ -2,9 +2,7 @@ import React from 'react';
 import ReactMapGL from 'react-map-gl';
 import UserPointer from '../components/UserPointer'
 import BackgroundImage from '../components/BackgroundImage'
-import {fromJS} from 'immutable';
 
-// const Map = (props) => {
 class Map extends React.Component {
 	constructor(props) {
 		super(props);

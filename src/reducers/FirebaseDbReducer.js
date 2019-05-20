@@ -5,13 +5,11 @@ const initialAppState = {};
 const FirebaseDbReducer = (state = initialAppState, action) => {
 	switch (action.type) {
 		case actionTypes.USERLOCATIONS_RECEIVE_DATA:
-		// console.log(action.userlocations);
-			if(action.userlocations === null) return state;
+			if (action.userlocations === null) return state;
 			let userlocations = [];
 			Object.keys(action.userlocations).forEach((key) => {
 				userlocations[key] = Object.keys(action.userlocations[key]).map(k => action.userlocations[key][k])
 			})
-			// console.log(userlocations);
 			return {
 				...state,
 				userlocations: userlocations,

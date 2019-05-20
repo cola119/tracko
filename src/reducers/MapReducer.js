@@ -5,16 +5,13 @@ import * as actionTypes from '../utils/actionTypes';
 const zoom = { zoom: 15 };
 
 const initialAppState = {
-	viewport : { ...zoom }
-	// viewport : { ...center, ...zoom }
-	// viewport : { ...size, ...center, ...zoom }
+	viewport: { ...zoom }
 };
 
 const MapReducer = (state = initialAppState, action) => {
 	switch (action.type) {
 		case actionTypes.ON_VIEWPORT_CHANGE:
 			const { width, height, ...etc } = action.viewport
-			// console.log(action.viewport);
 			return {
 				...state,
 				viewport: etc

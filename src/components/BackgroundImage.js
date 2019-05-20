@@ -1,11 +1,9 @@
 import React from 'react';
 import { SVGOverlay, BaseControl } from 'react-map-gl';
-import omap from '../img/aa.jpg';
 
 
 class BackgroundImage extends BaseControl {
 	redraw = ({ project }) => {
-		const { viewport } = this._context;
 		const [x1, y1] = project([this.props.comp.image.ltLong, this.props.comp.image.ltLat]);	// 左上
 		const [x2, y2] = project([this.props.comp.image.rbLong, this.props.comp.image.rbLat]);	// 右下
 		const [width, height] = [x2 - x1, y2 - y1];

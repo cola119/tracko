@@ -12,28 +12,26 @@ import { mapboxConfig } from '../mapbox/config';
 class EventContainer extends Component {
 	componentDidMount() {
 		const { actions, match, compList } = this.props;
-		// actions.loadCompList(match.params.id);
-		if(!Object.keys(compList).includes(match.params.id)) return;
+		if (!Object.keys(compList).includes(match.params.id)) return;
 		actions.loadClassList(match.params.id);
 		actions.loadUserlist(match.params.id);
 		actions.loadUserLocations(match.params.id);
 	}
 
 	render() {
-		const token = mapboxConfig.token;
 		const { match, compList, MapReducer, FirebaseDbReducer, LeftDrawerReducer, SettingsReducer, actions } = this.props;
-		if(FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined || FirebaseDbReducer.classlist === undefined) {
+		if (FirebaseDbReducer.userlist === undefined || FirebaseDbReducer.userlocations === undefined || FirebaseDbReducer.classlist === undefined) {
 			return <div>loading</div>;
 		}
-		if(compList[match.params.id].public === false) return <div>coming soon</div>;
+		if (compList[match.params.id].public === false) return <div>coming soon</div>;
 
 		const center = { latitude: compList[match.params.id].center.lat, longitude: compList[match.params.id].center.long, };
 		// console.log(center);
 		return (
 			<div>
 				<Map
-					viewport={{...center, ...MapReducer.viewport}}
-					token={token}
+					viewport={{ ...center, ...MapReducer.viewport }}
+					token={mapboxConfig.token}
 					onViewportChange={(viewport) => actions.onViewportChange(viewport)}
 					sliderValue={SettingsReducer.sliderValue}
 					users={FirebaseDbReducer.users}
@@ -46,7 +44,7 @@ class EventContainer extends Component {
 					comp={compList[match.params.id]}
 				/>
 				<LeftDrawer
-					compName={compList[match.params.id].name}/>
+					compName={compList[match.params.id].name} />
 				<BottomSlider
 					sliderValue={SettingsReducer.sliderValue}
 					onBottomSliderChange={actions.onBottomSliderChange}
@@ -55,7 +53,7 @@ class EventContainer extends Component {
 				/>
 				<LiveOrRecFab
 					liveFlag={SettingsReducer.liveFlag}
-					onLiveOrRecChange={actions.onLiveOrRecChange}/>
+					onLiveOrRecChange={actions.onLiveOrRecChange} />
 
 			</div>
 		);
