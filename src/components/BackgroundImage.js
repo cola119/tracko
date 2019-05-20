@@ -7,7 +7,7 @@ class BackgroundImage extends BaseControl {
 		const [x1, y1] = project([this.props.comp.image.ltLong, this.props.comp.image.ltLat]);	// 左上
 		const [x2, y2] = project([this.props.comp.image.rbLong, this.props.comp.image.rbLat]);	// 右下
 		const [width, height] = [x2 - x1, y2 - y1];
-		console.log(`${process.env.PUBLIC_URL}/img/${this.props.comp.image.name}`)
+		// console.log(`${process.env.PUBLIC_URL}/img/${this.props.comp.image.name}`)
 		return (
 			<g>
 				{/* <circle cx={x1} cy={y1} r={viewport.zoom/2} /> */}

@@ -11,13 +11,13 @@ const styles = theme => ({
 	},
 });
 
-function LiveOrRecFab(props) {
+const LiveOrRecFab = (props) => {
 	const { classes, liveFlag, onLiveOrRecChange } = props;
 	const fab = {
-			color: liveFlag ? 'primary' : 'secondary',
-			className: classes.fab,
-			string: liveFlag ? 'LIVE' : 'REC',
-		};
+		color: liveFlag ? 'primary' : 'secondary',
+		className: classes.fab,
+		string: liveFlag ? 'LIVE' : 'REC',
+	};
 	return (
 		<div>
 			<Fab color={fab.color} className={fab.className} onClick={(e) => onLiveOrRecChange(e, liveFlag)}>

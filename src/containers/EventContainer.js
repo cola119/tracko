@@ -26,7 +26,7 @@ class EventContainer extends Component {
 		if (compList[match.params.id].public === false) return <div>coming soon</div>;
 
 		const center = { latitude: compList[match.params.id].center.lat, longitude: compList[match.params.id].center.long, };
-		// console.log(center);
+
 		return (
 			<div>
 				<Map

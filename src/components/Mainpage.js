@@ -15,7 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router';
 
-import backgroundImage from '../../img/background.png';
+import backgroundImage from '../img/background.png';
 
 
 const styles = theme => ({
@@ -71,7 +71,6 @@ const styles = theme => ({
 const Mainpage = (props) => {
 	const { classes, compList } = props;
 	const cards = Object.keys(compList);
-	// const cards = [1, 2];
 
 	const handleToEventPage = (e, id) => {
 		props.history.push('/events/' + id);
@@ -101,7 +100,7 @@ const Mainpage = (props) => {
 						<div className={classes.heroButtons}>
 							<Grid container spacing={16} justify="center">
 								<Grid item>
-									<Button variant="contained" color="primary" onClick={(e) => handleToEventPage(e, 'demo')}>
+									<Button variant="contained" color="primary" onClick={(e) => handleToEventPage(e, '1')}>
 										デモを見る
 									</Button>
 								</Grid>

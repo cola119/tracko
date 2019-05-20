@@ -1,13 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import ExpansionPanel from '@material-ui/core/ExpansionPanel';
-import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-// import MailIcon from '@material-ui/icons/Mail';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
 
 import ClassesExpansionPanel from './ExpansionPanels/ClassesExpansionPanel';
 import RunnersExpansionPanel from './ExpansionPanels/RunnersExpansionPanel';
@@ -46,15 +39,6 @@ const LeftExpansionPanel = (props) => {
 				pointerRate={props.pointerRate}
 				onPointerRateChange={props.onPointerRateChange}
 			/>
-
-
-			<ExpansionPanel disabled>
-				<ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-					<Typography>
-						Disabled
-					</Typography>
-				</ExpansionPanelSummary>
-			</ExpansionPanel>
 		</div>
 	);
 }
